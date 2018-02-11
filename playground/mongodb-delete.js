@@ -8,15 +8,15 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,db) => {
   }
   console.log('Connected to mongodb server');
 
-// db.collection('Todos').deleteMany({completed:true}).then((res) => {
-//   console.log(res);
-// });
+db.collection('Users').deleteMany({name:'kartikeya tiwari'}).then((res) => {
+  console.log(res);
+});
 // db.collection('Todos').deleteOne({completed:false}).then((res) => {
 //  console.log(res);
 //  });
-db.collection('Todos').findOneAndDelete({_id:new ObjectID('5a8081a5869373948d6c5d38')}).then((res) => {
- console.log(res);
- });
+// db.collection('Todos').findOneAndDelete({_id:new ObjectID('5a8081a5869373948d6c5d38')}).then((res) => {
+//  console.log(res);
+//  });
 
 //db.close();
 })
