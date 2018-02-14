@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.post('/todos',(req,res) => {
   var todo = new Todo ({
     text:req.body.text
-});
+  });
 todo.save().then((doc) => {
   res.send(doc)
 },(e) => {
@@ -26,7 +26,7 @@ app.get('/todos',(req,res) => {
   res.status(400).send('unable to get the todos',e)
 })
 
-app.listen(3000,()=>{
+app.listen(3000,()=> {
   console.log('the app is running on port 3000');
 })
 module.exports = {app};
