@@ -8,7 +8,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,db) => {
   }
   console.log('Connected to mongodb server');
 
-db.collection('Users').deleteMany({name:'kartikeya tiwari'}).then((res) => {
+db.collection('users').deleteMany({email:"kartikeytiwari79.kt@gmail.com"}).then((res) => {
   console.log(res);
 });
 // db.collection('Todos').deleteOne({completed:false}).then((res) => {
