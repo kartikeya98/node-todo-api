@@ -5,8 +5,8 @@ const {ObjectID} =require('mongodb');
 const bodyParser = require('body-parser');
 const {mongoose} = require('./db/mongoose');
 const {Todo} = require('./models/todo');
-const {User} = require('.//models/user');
-
+const {User} = require('./models/user');
+const {authenticate} = require('./middlewaare/authenticate');
 var Port = process.env.PORT;
 var app = express();
 
@@ -99,6 +99,19 @@ app.post('/users' ,(req,res) => {
   }).catch((e) => {
     res.status(400).send(e);
   })
+});
+
+app.get('/users/me',authenticate,(req,res) => {
+  var token = req.header('x-auth');
+
+  User.findByToken(token).then((user) => {
+    if(!user) {
+      return  Promise.reject();
+    }
+    res.send(user);
+  }).catch((e) => {
+    res.status(401).send();
+  });
 });
 
 app.listen(Port,()=> {
